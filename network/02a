@@ -1,0 +1,1 @@
+eval ifconfig | grep "broadcast" | awk '{print $NF}'

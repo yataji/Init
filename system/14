@@ -1,0 +1,1 @@
+sudo nohup tail -f /var/log/syslog &

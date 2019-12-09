@@ -1,0 +1,51 @@
+#!/bin/bash
+
+read -p 'Project name: ' project
+mkdir ~/Desktop/$project
+read -p 'Do you want to add Makefille?? (Y/N)' answer
+case $answer in
+	'y' | 'Y' | "YES" | "yes" | "Yes" )
+		echo "LIB = 
+NAME = 
+OBJ = 
+
+all : \$(NAME)
+
+\$(NAME) :
+	make -C \$(LIB)
+	clang -Wall -Wextra -Werror -I \$(LIB)/includes -c \$(CF)
+	clang -Wall -Wextra -Werror -I \$(LIB)/includes -o main.o -c main.c
+	clang -o \$(NAME) \$(OBJ) -I \$(LIB)/includes \$(LIB)/\$(LIB).a
+
+clean :
+	rm -f \$(OBJ) && make -C \$(LIB)/ clean
+
+fclean : clean
+	rm -f \$(NAME) && make -C \$(LIB)/ fclean
+
+re : fclean all" > ~/Desktop/$project/Makefile ;;
+esac
+read -p 'Do you want to add a Header file?? (Y/N)' answer4
+case $answer4 in
+        'y' | 'Y' | "YES" | "yes" | "Yes" )
+		touch ~/Desktop/$project/$project.h
+		;;
+esac
+i=1
+read -p 'Do you want to create same c files?? (Y/N)' answer2
+case $answer2 in
+	'y' | 'Y' | "YES" | "yes" | "Yes" )
+		while ((i != 0))
+		do
+			read -p 'Entre fillename: ' file
+			touch ~/Desktop/$project/$file.c
+			read -p 'Do you want create another file?? (Y/N)' answer3
+			case $answer3 in
+        			'y' | 'Y' | "YES" | "yes" | "Yes" )
+					i=1 ;;
+				* )
+				i=0 ;;
+			esac
+		done
+		;;
+esac

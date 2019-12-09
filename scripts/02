@@ -1,0 +1,4 @@
+#! /bin/bash
+read -p 'Entrez votre user: ' user_name
+pkill -9 -u $user_name
+sudo userdel -rf $user_name
